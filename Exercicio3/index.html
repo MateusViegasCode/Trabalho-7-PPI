@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 3 - Peso Ideal</title>
+</head>
+
+<body>
+    <h1>Cálculo de Peso Ideal</h1>
+
+    <label for="altura">Altura (em cm):</label>
+    <input type="text" id="altura" placeholder="Ex: 175">
+
+    <label for="sexo">Sexo:</label>
+    <select id="sexo">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+    </select>
+
+    <button id="btnCalcular">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        document.querySelector("#btnCalcular").addEventListener("click", function () {
+            let campoAltura = document.querySelector("#altura");
+            let altura = parseInt(campoAltura.value);
+            let selectSexo = document.querySelector("#sexo");
+            let sexo = selectSexo.value;
+            let pesoIdeal = 0;
+
+            if (sexo === "masculino") {
+                pesoIdeal = 52 + (0.75 * (altura - 152.4));
+            } else {
+                pesoIdeal = 52 + (0.67 * (altura - 152.4));
+            }
+
+            let pResultado = document.querySelector("#resultado");
+            pResultado.innerHTML = `O seu peso ideal é de <strong>${pesoIdeal.toFixed(2)} kg</strong>.`;
+        });
+    </script>
+
+    <h2>Print da Depuração:</h2>
+    <img src="print-ex3.png" alt="Print da depuração do cálculo">
+</body>
+
+</html>
